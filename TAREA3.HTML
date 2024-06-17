@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar número primo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center mb-4">Verificar número primo</h1>
+
+    <form id="primeForm">
+        <div class="form-group row">
+            <label for="numero" class="col-sm-2 col-form-label">Número Entero</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="numero" placeholder="Ingresa un número entero" min="0">
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="verificarPrimo()">Verificar</button>
+        </div>
+    </form>
+
+    <div class="card mt-5">
+        <div class="card-header">
+            Resultado
+        </div>
+        <div class="card-body">
+            <p id="resultado" class="card-text"></p>
+        </div>
+    </div>
+<script TYPE="TEXT/JAVASCRIPT">
+ function verificarPrimo() {
+            let numero = parseInt(document.getElementById('numero').value);
+            let resultado = document.getElementById('resultado');
+
+            function esPrimo(numero) {
+            if (numero <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(numero); i++) {
+                if (numero % i === 0) return false;
+            }
+            return true;
+        }
+            if (esPrimo(numero)) {
+                resultado.innerText = `El número ${numero} es primo.`;
+            } else {
+                resultado.innerText = `El número ${numero} no es primo.`;
+            }
+        }      
+    </script>
+</body>
+</html>
